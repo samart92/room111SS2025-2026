@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Item;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -82,5 +83,17 @@ class Product extends Model
     public function setUpdatedAt($updatedAt)
     {
         $this->attributes['updated_at'] = $updatedAt;
+    }
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+    public function getItems()
+    {
+        return $this->items;
+    }
+    public function setItems($items)
+    {
+        $this->items = $items;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Order;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -110,5 +111,18 @@ class User extends Authenticatable
     public function setUpdatedAt($updatedAt)
     {
         $this->attributes['updated_at'] = $updatedAt;
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
     }
 }
